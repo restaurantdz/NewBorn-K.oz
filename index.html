@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Newborn K.oz | Menu Officiel</title>
+    <title>Newborn K.oz | Officiel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -27,141 +27,143 @@
         body.rtl { direction: rtl; }
 
         /* --- ACCUEIL VIDEO --- */
-        .hero { position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .hero { position: relative; height: 100vh; width: 100%; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
         #bg-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; z-index: -1; transform: translate(-50%, -50%); object-fit: cover; }
         .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
         .hero-content { z-index: 2; color: white; padding: 20px; }
-        .hero-content h1 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; }
-        .btn-start { padding: 15px 35px; border: 2px solid white; border-radius: 50px; color: white; text-decoration: none; font-weight: bold; display: inline-block; margin: 30px 0; }
-        .hero-contacts { display: flex; gap: 25px; justify-content: center; }
-        .hero-contacts a { color: white; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
-        .hero-contacts i { display: block; font-size: 1.5rem; margin-bottom: 5px; }
+        .hero-content h1 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; letter-spacing: 2px; }
+        .expression { font-size: 1.1rem; margin-bottom: 40px; color: #eee; }
+        .btn-start { padding: 15px 35px; border: 2px solid white; border-radius: 50px; color: white; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 40px; text-transform: uppercase; }
+        
+        .hero-contacts { display: flex; gap: 30px; justify-content: center; }
+        .hero-contacts a { color: white; text-decoration: none; text-align: center; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+        .hero-contacts i { font-size: 1.8rem; display: block; margin-bottom: 8px; }
 
-        /* --- HEADER & MENU --- */
-        #menu-ui { display: none; padding-top: 80px; padding-bottom: 100px; }
-        header { position: fixed; top: 0; width: 100%; height: 70px; background: var(--bg-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid var(--accent-grey); }
-        .brand { font-weight: 900; color: var(--primary-blue); font-size: 1.1rem; }
-        .header-tools { display: flex; align-items: center; gap: 15px; }
+        /* --- HEADER & NAVIGATION --- */
+        #menu-ui { display: none; padding-top: 85px; padding-bottom: 110px; }
+        header { position: fixed; top: 0; width: 100%; height: 75px; background: var(--bg-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid var(--accent-grey); }
+        .brand-name { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; color: var(--primary-blue); }
+        .header-controls { display: flex; align-items: center; gap: 15px; }
+        .control-icon { font-size: 1.3rem; color: var(--primary-blue); cursor: pointer; text-decoration: none; }
 
-        .cat-nav { display: flex; gap: 10px; padding: 10px 15px; position: sticky; top: 70px; background: var(--bg-color); z-index: 999; }
-        .cat-btn { flex: 1; height: 45px; border-radius: 25px; border: 1px solid var(--primary-blue); background: var(--card-bg); color: var(--primary-blue); font-weight: bold; }
+        .category-switcher { display: flex; gap: 10px; padding: 10px 20px; position: sticky; top: 75px; background: var(--bg-color); z-index: 999; }
+        .cat-btn { flex: 1; height: 45px; border-radius: 25px; border: 1px solid var(--primary-blue); background: var(--card-bg); color: var(--primary-blue); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; }
         .cat-btn.active { background: var(--primary-blue); color: white; }
 
-        /* --- UNE LIGNE PAR ARTICLE --- */
+        /* --- LISTE : UNE LIGNE PAR ARTICLE --- */
         .list-container { display: none; padding: 15px; flex-direction: column; gap: 12px; }
         .list-container.active { display: flex; }
         .item-row { background: var(--card-bg); border-radius: 15px; border: 1px solid var(--accent-grey); display: flex; align-items: center; padding: 10px; }
-        .img-box { width: 85px; height: 85px; min-width: 85px; border-radius: 10px; overflow: hidden; background: #eee; }
+        .img-box { width: 90px; height: 90px; min-width: 90px; border-radius: 10px; overflow: hidden; background: #eee; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .item-info { flex: 1; padding: 0 15px; }
+        .item-details { flex: 1; padding: 0 15px; }
+        .item-name { font-weight: 700; font-size: 1rem; color: var(--text-main); }
         .item-price { font-weight: 800; color: var(--primary-blue); margin-top: 4px; }
         .add-btn { width: 40px; height: 40px; background: var(--primary-blue); color: white; border-radius: 50%; border: none; font-size: 1.5rem; font-weight: bold; }
 
-        /* --- PANIER & CHECKOUT --- */
-        #cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; height: 60px; background: var(--primary-blue); color: white; border-radius: 30px; display: none; align-items: center; justify-content: space-between; padding: 0 25px; z-index: 1500; font-weight: bold; }
-        #checkout-screen { display: none; position: fixed; inset: 0; background: var(--bg-color); z-index: 2000; padding: 20px; overflow-y: auto; }
-        
-        .qty-box { display: flex; align-items: center; gap: 10px; background: var(--accent-grey); border-radius: 20px; padding: 5px 12px; }
+        /* --- PANIER FLOTTANT --- */
+        #mini-cart { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; height: 60px; background: var(--primary-blue); color: white; border-radius: 30px; display: none; align-items: center; justify-content: space-between; padding: 0 25px; z-index: 1500; font-weight: bold; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+        /* --- ECRAN DE COMMANDE --- */
+        #checkout-screen { display: none; position: fixed; inset: 0; background: var(--bg-color); z-index: 2000; padding: 25px; overflow-y: auto; }
+        .qty-controls { display: flex; align-items: center; gap: 10px; background: var(--accent-grey); border-radius: 20px; padding: 5px 12px; }
         .qty-btn { background: none; border: none; font-size: 1.2rem; font-weight: bold; color: var(--primary-blue); width: 20px; }
 
-        .type-selector { display: flex; gap: 5px; margin: 20px 0; }
-        .type-opt { flex: 1; height: 45px; border: 2px solid var(--accent-grey); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; text-align: center; }
-        .type-opt.active { border-color: var(--primary-blue); color: var(--primary-blue); background: rgba(10,31,68,0.1); }
-
-        .form-group { margin-bottom: 15px; display: none; }
+        .type-selector { display: flex; gap: 8px; margin: 25px 0; }
+        .type-opt { flex: 1; height: 48px; border: 2px solid var(--accent-grey); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; text-transform: uppercase; text-align: center; color: var(--text-main); }
+        .type-opt.active { border-color: var(--primary-blue); color: var(--primary-blue); background: rgba(10,31,68,0.05); }
+        
+        .form-group { margin-bottom: 18px; display: none; }
         .form-group.visible { display: block; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid var(--accent-grey); border-radius: 10px; background: var(--card-bg); color: var(--text-main); }
-        .btn-wa { width: 100%; height: 55px; background: #28a745; color: white; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; margin-top: 10px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--primary-blue); }
+        .form-group input { width: 100%; padding: 15px; border: 1px solid var(--accent-grey); border-radius: 12px; background: var(--card-bg); color: var(--text-main); font-size: 1rem; }
+        .btn-send { width: 100%; height: 60px; background: #28a745; color: white; border: none; border-radius: 12px; font-weight: 800; text-transform: uppercase; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div id="hero" class="hero">
-        <video autoplay muted loop playsinline id="bg-video"><source src="hero-video.mp4" type="video/mp4"></video>
+        <video autoplay muted loop playsinline id="bg-video"><source src="hero-video.MP4" type="video/mp4"></video>
         <div class="overlay"></div>
         <div class="hero-content">
             <h1>Newborn K.oz</h1>
-            <p id="h-desc">"L'authentique Pizza au Feu de Bois."</p>
+            <p class="expression" id="h-desc">"L'authentique Pizza au Feu de Bois."</p>
             <a href="#" class="btn-start" onclick="showMenu()" id="h-btn">Voir le menu</a>
             <div class="hero-contacts">
-                <a href="tel:+213659235094"><i class="fas fa-phone-alt"></i><span id="txt-c">Appeler</span></a>
+                <a href="tel:+213659235094"><i class="fas fa-phone-alt"></i><span id="txt-call">Appeler</span></a>
                 <a href="#"><i class="fab fa-instagram"></i><span>Instagram</span></a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i><span id="txt-l">Adresse</span></a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i><span id="txt-loc">Localiser</span></a>
             </div>
         </div>
     </div>
 
     <div id="menu-ui">
         <header>
-            <div class="brand">Newborn K.oz</div>
-            <div class="header-tools">
-                <select id="lang-select" onchange="updateLang()" style="border:none; background:transparent; font-weight:bold; color:var(--primary-blue);">
+            <div class="brand-name">Newborn K.oz</div>
+            <div class="header-controls">
+                <select id="lang-select" onchange="updateLang()" style="border:none; background:transparent; font-weight:bold; color:var(--primary-blue); font-size:1rem;">
                     <option value="fr">FR</option>
                     <option value="ar">AR</option>
                 </select>
-                <a href="tel:+213659235094" style="color:var(--primary-blue); font-size:1.2rem;"><i class="fas fa-phone-alt"></i></a>
-                <i class="fas fa-moon" id="dark-icon" onclick="toggleDark()" style="color:var(--primary-blue); font-size:1.2rem; cursor:pointer;"></i>
+                <a href="tel:+213659235094" class="control-icon"><i class="fas fa-phone-alt"></i></a>
+                <i class="fas fa-moon control-icon" id="dark-icon" onclick="toggleDark()"></i>
             </div>
         </header>
 
-        <div class="cat-nav">
-            <button class="cat-btn active" id="cp" onclick="tab('pizzas', this)">Pizzas</button>
-            <button class="cat-btn" id="cb" onclick="tab('boissons', this)">Boissons</button>
+        <div class="category-switcher">
+            <button class="cat-btn active" id="btn-pizzas" onclick="switchCat('pizzas', this)">Pizzas</button>
+            <button class="cat-btn" id="btn-boissons" onclick="switchCat('boissons', this)">Boissons</button>
         </div>
 
-        <div id="p-grid" class="list-container active"></div>
-        <div id="b-grid" class="list-container"></div>
+        <div id="pizzas-grid" class="list-container active"></div>
+        <div id="boissons-grid" class="list-container"></div>
     </div>
 
-    <div id="cart-bar" onclick="openCheckout()">
-        <span id="txt-mc">MON PANIER</span>
-        <span id="total-bar">0 DZD</span>
+    <div id="mini-cart" onclick="openCheckout()">
+        <span id="txt-mycart"><i class="fas fa-shopping-bag"></i> MON PANIER</span>
+        <span id="cart-total">0 DZD</span>
     </div>
 
     <div id="checkout-screen">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h2 id="txt-title">Ma Commande</h2>
-            <i class="fas fa-times" style="font-size:1.5rem;" onclick="closeCheckout()"></i>
+            <h2 id="txt-ordertitle" style="color:var(--primary-blue);">Ma Commande</h2>
+            <i class="fas fa-times" style="font-size:1.8rem;" onclick="closeCheckout()"></i>
         </div>
-        <div id="checkout-list" style="margin-top:20px;"></div>
-        <div style="display:flex; justify-content:space-between; font-weight:900; margin:25px 0; color:var(--primary-blue); font-size:1.2rem;">
-            <span>TOTAL</span><span id="total-final">0 DZD</span>
+        <div id="cart-list" style="margin-top:20px;"></div>
+        <div style="display:flex; justify-content:space-between; font-weight:900; margin:25px 0; color:var(--primary-blue); font-size:1.3rem;">
+            <span>TOTAL</span><span id="final-total">0 DZD</span>
         </div>
 
         <div class="type-selector">
-            <div class="type-opt active" id="o1" onclick="setType('sur-place', this)">Sur Place</div>
-            <div class="type-opt" id="o2" onclick="setType('emporter', this)">A Emporter</div>
-            <div class="type-opt" id="o3" onclick="setType('livraison', this)">Livraison</div>
+            <div class="type-opt active" id="opt-sur" onclick="setType('sur-place', this)">Sur Place</div>
+            <div class="type-opt" id="opt-emp" onclick="setType('emporter', this)">A Emporter</div>
+            <div class="type-opt" id="opt-liv" onclick="setType('livraison', this)">Livraison</div>
         </div>
 
         <form id="orderForm">
-            <div class="form-group f-table visible"><label id="lb1">N° Table</label><input type="number" id="table"></div>
-            <div class="form-group f-name"><label id="lb2">Nom complet</label><input type="text" id="name"></div>
-            <div class="form-group f-phone"><label id="lb3">Téléphone</label><input type="tel" id="phone"></div>
-            <div class="form-group f-addr"><label id="lb4">Adresse</label><input type="text" id="addr"></div>
-            <button type="submit" class="btn-wa" id="btn-wa">COMMANDER SUR WHATSAPP</button>
+            <div class="form-group f-table visible"><label id="lbl-table">Numéro de Table</label><input type="number" id="table"></div>
+            <div class="form-group f-name"><label id="lbl-name">Nom complet</label><input type="text" id="name"></div>
+            <div class="form-group f-phone"><label id="lbl-phone">Numéro de Téléphone</label><input type="tel" id="phone"></div>
+            <div class="form-group f-addr"><label id="lbl-addr">Adresse de livraison complète</label><input type="text" id="addr"></div>
+            
+            <button type="submit" class="btn-send" id="btn-wa">COMMANDER SUR WHATSAPP</button>
         </form>
     </div>
 
     <script>
         const translations = {
-            fr: { desc: '"L\'authentique Pizza au Feu de Bois."', btn: "Voir le menu", call: "Appeler", loc: "Adresse", cp: "Pizzas", cb: "Boissons", mc: "MON PANIER", tit: "Ma Commande", o1: "Sur Place", o2: "A Emporter", o3: "Livraison", lb1: "N° Table", lb2: "Nom complet", lb3: "Téléphone", lb4: "Adresse", bwa: "COMMANDER SUR WHATSAPP" },
-            ar: { desc: '"بيتزا أصلية على حطب الغابة"', btn: "عرض القائمة", call: "اتصال", loc: "الموقع", cp: "بيتزا", cb: "مشروبات", mc: "سلتي", tit: "طلبيتي", o1: "في المطعم", o2: "للأخذ", o3: "توصيل", lb1: "رقم الطاولة", lb2: "الاسم الكامل", lb3: "رقم الهاتف", lb4: "العنوان", bwa: "إرسال عبر واتساب" }
+            fr: { desc: '"L\'authentique Pizza au Feu de Bois."', start: "Voir le menu", call: "Appeler", loc: "Localiser", p: "Pizzas", b: "Boissons", mc: "MON PANIER", ot: "Ma Commande", sur: "Sur Place", emp: "A Emporter", liv: "Livraison", lTab: "Numéro de Table", lNam: "Nom complet", lPho: "Téléphone", lAdd: "Adresse complète", bwa: "COMMANDER SUR WHATSAPP" },
+            ar: { desc: '"بيتزا أصلية على حطب الغابة"', start: "عرض القائمة", call: "اتصال", loc: "الموقع", p: "بيتزا", b: "مشروبات", mc: "سلتي", ot: "طلبيتي", sur: "في المطعم", emp: "للأخذ", liv: "توصيل", lTab: "رقم الطاولة", lNam: "الاسم الكامل", lPho: "رقم الهاتف", lAdd: "العنوان الكامل", bwa: "إرسال عبر واتساب" }
         };
 
         const menu = {
             pizzas: [
-                {id:1, n:{fr:'Marguerite', ar:'مارغريتا'}, p:500, img:'p1.jpg'},
-                {id:2, n:{fr:'Végétarienne', ar:'نباتية'}, p:750, img:'p2.jpg'},
-                {id:3, n:{fr:'Thon', ar:'تونة'}, p:850, img:'p3.jpg'},
-                {id:4, n:{fr:'4 Fromages', ar:'4 أجبان'}, p:950, img:'p4.jpg'},
-                {id:5, n:{fr:'Poulet BBQ', ar:'دجاج BBQ'}, p:1000, img:'p5.jpg'},
-                {id:6, n:{fr:'Carnivore', ar:'لحوم'}, p:1100, img:'p6.jpg'}
+                {id:1, n:{fr:'Marguerite', ar:'مارغريتا'}, p:500, img:'p1.jpg'}, {id:2, n:{fr:'Végétarienne', ar:'نباتية'}, p:750, img:'p2.jpg'},
+                {id:3, n:{fr:'Thon', ar:'تونة'}, p:850, img:'p3.jpg'}, {id:4, n:{fr:'4 Fromages', ar:'4 أجبان'}, p:950, img:'p4.jpg'},
+                {id:5, n:{fr:'Poulet BBQ', ar:'دجاج BBQ'}, p:1000, img:'p5.jpg'}, {id:6, n:{fr:'Carnivore', ar:'لحوم'}, p:1100, img:'p6.jpg'}
             ],
             boissons: [
-                {id:7, n:{fr:'Coca 33cl', ar:'كوكا 33سل'}, p:150, img:'b1.jpg'},
-                {id:8, n:{fr:'Eau 1.5L', ar:'ماء 1.5ل'}, p:100, img:'b2.jpg'},
+                {id:7, n:{fr:'Coca 33cl', ar:'كوكا 33سل'}, p:150, img:'b1.jpg'}, {id:8, n:{fr:'Eau 1.5L', ar:'ماء 1.5ل'}, p:100, img:'b2.jpg'},
                 {id:9, n:{fr:'Jus Frais', ar:'عصير طازج'}, p:300, img:'b3.jpg'}
             ]
         };
@@ -179,38 +181,38 @@
             document.body.classList.toggle('rtl', currentLang === 'ar');
             const t = translations[currentLang];
             document.getElementById('h-desc').innerText = t.desc;
-            document.getElementById('h-btn').innerText = t.btn;
-            document.getElementById('txt-c').innerText = t.call;
-            document.getElementById('txt-l').innerText = t.loc;
-            document.getElementById('cp').innerText = t.cp;
-            document.getElementById('cb').innerText = t.cb;
-            document.getElementById('txt-mc').innerText = t.mc;
-            document.getElementById('txt-title').innerText = t.tit;
-            document.getElementById('o1').innerText = t.o1;
-            document.getElementById('o2').innerText = t.o2;
-            document.getElementById('o3').innerText = t.o3;
-            document.getElementById('lb1').innerText = t.lb1;
-            document.getElementById('lb2').innerText = t.lb2;
-            document.getElementById('lb3').innerText = t.lb3;
-            document.getElementById('lb4').innerText = t.lb4;
+            document.getElementById('h-btn').innerText = t.start;
+            document.getElementById('txt-call').innerText = t.call;
+            document.getElementById('txt-loc').innerText = t.loc;
+            document.getElementById('btn-pizzas').innerText = t.p;
+            document.getElementById('btn-boissons').innerText = t.b;
+            document.getElementById('txt-mycart').innerHTML = `<i class="fas fa-shopping-bag"></i> ${t.mc}`;
+            document.getElementById('txt-ordertitle').innerText = t.ot;
+            document.getElementById('opt-sur').innerText = t.sur;
+            document.getElementById('opt-emp').innerText = t.emp;
+            document.getElementById('opt-liv').innerText = t.liv;
+            document.getElementById('lbl-table').innerText = t.lTab;
+            document.getElementById('lbl-name').innerText = t.lNam;
+            document.getElementById('lbl-phone').innerText = t.lPho;
+            document.getElementById('lbl-addr').innerText = t.lAdd;
             document.getElementById('btn-wa').innerText = t.bwa;
             renderItems();
         }
 
-        function tab(c, b) {
-            document.querySelectorAll('.cat-btn').forEach(x => x.classList.remove('active')); b.classList.add('active');
+        function switchCat(cat, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
             document.querySelectorAll('.list-container').forEach(g => g.classList.remove('active'));
-            document.getElementById(c === 'pizzas' ? 'p-grid' : 'b-grid').classList.add('active');
+            document.getElementById(cat + '-grid').classList.add('active');
         }
 
         function renderItems() {
             ['pizzas', 'boissons'].forEach(cat => {
-                const g = document.getElementById(cat === 'pizzas' ? 'p-grid' : 'b-grid');
-                g.innerHTML = menu[cat].map(i => `
+                const grid = document.getElementById(cat + '-grid');
+                grid.innerHTML = menu[cat].map(i => `
                     <div class="item-row">
                         <div class="img-box"><img src="${i.img}" onerror="this.parentElement.style.display='none'"></div>
-                        <div class="item-info">
-                            <div style="font-weight:700">${i.n[currentLang]}</div>
+                        <div class="item-details">
+                            <div class="item-name">${i.n[currentLang]}</div>
                             <div class="item-price">${i.p} DZD</div>
                         </div>
                         <button class="add-btn" onclick="changeQty(${i.id}, 1, '${cat}')">+</button>
@@ -225,39 +227,39 @@
                 item.qty += delta;
                 if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
             } else if (delta > 0) {
-                const src = cat ? menu[cat] : [...menu.pizzas, ...menu.boissons];
-                cart.push({...src.find(x => x.id === id), qty: 1});
+                const source = cat ? menu[cat] : [...menu.pizzas, ...menu.boissons];
+                cart.push({...source.find(x => x.id === id), qty: 1});
             }
             updateUI();
         }
 
         function updateUI() {
             const total = cart.reduce((s, i) => s + (i.p * i.qty), 0);
-            document.getElementById('cart-bar').style.display = cart.length > 0 ? 'flex' : 'none';
-            document.getElementById('total-bar').innerText = total + " DZD";
+            document.getElementById('mini-cart').style.display = cart.length > 0 ? 'flex' : 'none';
+            document.getElementById('cart-total').innerText = total + " DZD";
             if(document.getElementById('checkout-screen').style.display === 'block') renderCheckout();
         }
 
         function renderCheckout() {
-            document.getElementById('checkout-list').innerHTML = cart.map(i => `
+            document.getElementById('cart-list').innerHTML = cart.map(i => `
                 <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--accent-grey)">
                     <div style="font-weight:700">${i.n[currentLang]}</div>
-                    <div class="qty-box">
+                    <div class="qty-controls">
                         <button class="qty-btn" onclick="changeQty(${i.id}, -1)">-</button>
                         <span style="font-weight:800">${i.qty}</span>
                         <button class="qty-btn" onclick="changeQty(${i.id}, 1)">+</button>
                     </div>
                 </div>
             `).join('');
-            document.getElementById('total-final').innerText = cart.reduce((s, i) => s + (i.p * i.qty), 0) + " DZD";
+            document.getElementById('final-total').innerText = cart.reduce((s, i) => s + (i.p * i.qty), 0) + " DZD";
         }
 
-        function setType(t, b) {
-            currentType = t;
-            document.querySelectorAll('.type-opt').forEach(o => o.classList.remove('active')); b.classList.add('active');
+        function setType(type, btn) {
+            currentType = type;
+            document.querySelectorAll('.type-opt').forEach(o => o.classList.remove('active')); btn.classList.add('active');
             document.querySelectorAll('.form-group').forEach(f => f.classList.remove('visible'));
-            if(t === 'sur-place') document.querySelector('.f-table').classList.add('visible');
-            else if(t === 'emporter') { document.querySelector('.f-name').classList.add('visible'); document.querySelector('.f-phone').classList.add('visible'); }
+            if(type === 'sur-place') document.querySelector('.f-table').classList.add('visible');
+            else if(type === 'emporter') { document.querySelector('.f-name').classList.add('visible'); document.querySelector('.f-phone').classList.add('visible'); }
             else { document.querySelector('.f-name').classList.add('visible'); document.querySelector('.f-phone').classList.add('visible'); document.querySelector('.f-addr').classList.add('visible'); }
         }
 

@@ -3,166 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Newborn K.oz | Menu Final</title>
+    <title>Newborn K.oz | Menu Officiel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-blue: #0a1f44;
             --bg-color: #fdfdfd;
             --card-bg: #ffffff;
-            --accent-grey: #eeeeee;
+            --accent-grey: #e0e0e0;
             --text-main: #333333;
-            --text-white: #ffffff;
         }
 
-        /* --- MODE SOMBRE --- */
         body.dark-mode {
             --bg-color: #121212;
+            --primary-blue: #a0c4ff;
             --card-bg: #1e1e1e;
-            --primary-blue: #4d88ff;
             --accent-grey: #333333;
             --text-main: #fdfdfd;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; -webkit-tap-highlight-color: transparent; transition: background 0.3s, color 0.3s; }
-        body { background-color: var(--bg-color); color: var(--text-main); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; transition: 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
         body.rtl { direction: rtl; }
 
         /* --- ACCUEIL VIDEO --- */
-        .hero { position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; }
-        #user-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; z-index: -1; transform: translate(-50%, -50%); object-fit: cover; }
-        .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 0; }
-        .hero-content { z-index: 1; padding: 20px; }
-        .hero-content h1 { font-size: 2.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; font-weight: 900; }
-        .expression { font-size: 1.1rem; font-weight: 300; margin-bottom: 40px; }
-        .btn-start { padding: 18px 40px; border: 2px solid white; border-radius: 50px; color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 50px; }
-        .contact-bar { display: flex; gap: 30px; justify-content: center; }
-        .contact-bar a { color: white; text-decoration: none; font-size: 1.5rem; text-align: center; }
-        .contact-bar span { display: block; font-size: 0.6rem; text-transform: uppercase; margin-top: 5px; font-weight: bold; }
+        .hero { position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        #bg-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; z-index: -1; transform: translate(-50%, -50%); object-fit: cover; }
+        .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+        .hero-content { z-index: 2; color: white; padding: 20px; }
+        .hero-content h1 { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; }
+        .btn-start { padding: 15px 35px; border: 2px solid white; border-radius: 50px; color: white; text-decoration: none; font-weight: bold; display: inline-block; margin: 30px 0; }
+        .hero-contacts { display: flex; gap: 25px; justify-content: center; }
+        .hero-contacts a { color: white; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
+        .hero-contacts i { display: block; font-size: 1.5rem; margin-bottom: 5px; }
 
-        /* --- INTERFACE MENU --- */
-        #menu-ui { display: none; padding-top: 80px; padding-bottom: 110px; }
+        /* --- HEADER & MENU --- */
+        #menu-ui { display: none; padding-top: 80px; padding-bottom: 100px; }
         header { position: fixed; top: 0; width: 100%; height: 70px; background: var(--bg-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid var(--accent-grey); }
-        .brand-area { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--primary-blue); text-transform: uppercase; }
-        .controls { display: flex; align-items: center; gap: 15px; }
+        .brand { font-weight: 900; color: var(--primary-blue); font-size: 1.1rem; }
+        .header-tools { display: flex; align-items: center; gap: 15px; }
 
         .cat-nav { display: flex; gap: 10px; padding: 10px 15px; position: sticky; top: 70px; background: var(--bg-color); z-index: 999; }
         .cat-btn { flex: 1; height: 45px; border-radius: 25px; border: 1px solid var(--primary-blue); background: var(--card-bg); color: var(--primary-blue); font-weight: bold; }
         .cat-btn.active { background: var(--primary-blue); color: white; }
 
-        .list-container { display: none; padding: 15px; flex-direction: column; gap: 15px; }
+        /* --- UNE LIGNE PAR ARTICLE --- */
+        .list-container { display: none; padding: 15px; flex-direction: column; gap: 12px; }
         .list-container.active { display: flex; }
-        .item-row { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid var(--accent-grey); display: flex; align-items: center; padding: 10px; }
-        .img-box { width: 90px; height: 90px; min-width: 90px; border-radius: 10px; overflow: hidden; background: #eee; }
+        .item-row { background: var(--card-bg); border-radius: 15px; border: 1px solid var(--accent-grey); display: flex; align-items: center; padding: 10px; }
+        .img-box { width: 85px; height: 85px; min-width: 85px; border-radius: 10px; overflow: hidden; background: #eee; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .item-details { flex: 1; padding: 0 15px; }
-        .item-name { font-weight: 700; font-size: 1rem; }
+        .item-info { flex: 1; padding: 0 15px; }
         .item-price { font-weight: 800; color: var(--primary-blue); margin-top: 4px; }
-        .add-btn { width: 40px; height: 40px; background: var(--primary-blue); color: white; border-radius: 50%; border: none; font-size: 1.4rem; }
+        .add-btn { width: 40px; height: 40px; background: var(--primary-blue); color: white; border-radius: 50%; border: none; font-size: 1.5rem; font-weight: bold; }
 
-        /* --- PANIER --- */
+        /* --- PANIER & CHECKOUT --- */
         #cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; height: 60px; background: var(--primary-blue); color: white; border-radius: 30px; display: none; align-items: center; justify-content: space-between; padding: 0 25px; z-index: 1500; font-weight: bold; }
-        #cart-screen { display: none; position: fixed; inset: 0; background: var(--bg-color); z-index: 2000; padding: 20px; overflow-y: auto; }
-        .cart-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--accent-grey); }
-        .qty-controls { display: flex; align-items: center; gap: 10px; background: var(--accent-grey); border-radius: 20px; padding: 5px 12px; }
+        #checkout-screen { display: none; position: fixed; inset: 0; background: var(--bg-color); z-index: 2000; padding: 20px; overflow-y: auto; }
+        
+        .qty-box { display: flex; align-items: center; gap: 10px; background: var(--accent-grey); border-radius: 20px; padding: 5px 12px; }
         .qty-btn { background: none; border: none; font-size: 1.2rem; font-weight: bold; color: var(--primary-blue); width: 20px; }
 
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary-blue); }
+        .type-selector { display: flex; gap: 5px; margin: 20px 0; }
+        .type-opt { flex: 1; height: 45px; border: 2px solid var(--accent-grey); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; text-align: center; }
+        .type-opt.active { border-color: var(--primary-blue); color: var(--primary-blue); background: rgba(10,31,68,0.1); }
+
+        .form-group { margin-bottom: 15px; display: none; }
+        .form-group.visible { display: block; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
         .form-group input { width: 100%; padding: 12px; border: 1px solid var(--accent-grey); border-radius: 10px; background: var(--card-bg); color: var(--text-main); }
-        .btn-wa { width: 100%; height: 55px; background: #28a745; color: white; border: none; border-radius: 12px; font-weight: 800; margin-top: 10px; }
+        .btn-wa { width: 100%; height: 55px; background: #28a745; color: white; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div id="hero" class="hero">
-        <video autoplay muted loop playsinline id="user-video"><source src="hero-video.mp4" type="video/mp4"></video>
+        <video autoplay muted loop playsinline id="bg-video"><source src="hero-video.mp4" type="video/mp4"></video>
         <div class="overlay"></div>
         <div class="hero-content">
             <h1>Newborn K.oz</h1>
-            <p class="expression" id="hero-desc">"L'authentique Pizza au Feu de Bois."</p>
-            <a href="#" class="btn-start" onclick="showMenu()" id="btn-txt">Voir le menu</a>
-            <div class="contact-bar">
-                <a href="tel:+213659235094"><i class="fas fa-phone-alt"></i><span id="call-txt">Appeler</span></a>
+            <p id="h-desc">"L'authentique Pizza au Feu de Bois."</p>
+            <a href="#" class="btn-start" onclick="showMenu()" id="h-btn">Voir le menu</a>
+            <div class="hero-contacts">
+                <a href="tel:+213659235094"><i class="fas fa-phone-alt"></i><span id="txt-c">Appeler</span></a>
                 <a href="#"><i class="fab fa-instagram"></i><span>Instagram</span></a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i><span id="loc-txt">Adresse</span></a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i><span id="txt-l">Adresse</span></a>
             </div>
         </div>
     </div>
 
     <div id="menu-ui">
         <header>
-            <div class="brand-area">
-                <i class="fas fa-phone-alt" style="font-size: 0.9rem;"></i>
-                <span>Newborn K.oz</span>
-            </div>
-            <div class="controls">
-                <i class="fas fa-moon" id="dark-icon" onclick="toggleDarkMode()" style="cursor:pointer; color:var(--primary-blue); font-size:1.2rem;"></i>
-                <select id="lang-select" onchange="changeLang()" style="border:none; background:transparent; font-weight:bold; color:var(--text-main);">
+            <div class="brand">Newborn K.oz</div>
+            <div class="header-tools">
+                <select id="lang-select" onchange="updateLang()" style="border:none; background:transparent; font-weight:bold; color:var(--primary-blue);">
                     <option value="fr">FR</option>
                     <option value="ar">AR</option>
                 </select>
+                <a href="tel:+213659235094" style="color:var(--primary-blue); font-size:1.2rem;"><i class="fas fa-phone-alt"></i></a>
+                <i class="fas fa-moon" id="dark-icon" onclick="toggleDark()" style="color:var(--primary-blue); font-size:1.2rem; cursor:pointer;"></i>
             </div>
         </header>
 
         <div class="cat-nav">
-            <button class="cat-btn active" id="cat-p" onclick="tab('pizzas', this)">Pizzas</button>
-            <button class="cat-btn" id="cat-b" onclick="tab('boissons', this)">Boissons</button>
+            <button class="cat-btn active" id="cp" onclick="tab('pizzas', this)">Pizzas</button>
+            <button class="cat-btn" id="cb" onclick="tab('boissons', this)">Boissons</button>
         </div>
 
-        <div id="p-list" class="list-container active"></div>
-        <div id="b-list" class="list-container"></div>
+        <div id="p-grid" class="list-container active"></div>
+        <div id="b-grid" class="list-container"></div>
     </div>
 
-    <div id="cart-bar" onclick="showCheckout()">
-        <span id="cart-bar-txt"><i class="fas fa-shopping-basket"></i> MON PANIER</span>
-        <span id="bar-total">0 DZD</span>
+    <div id="cart-bar" onclick="openCheckout()">
+        <span id="txt-mc">MON PANIER</span>
+        <span id="total-bar">0 DZD</span>
     </div>
 
-    <div id="cart-screen">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-            <h2 id="cart-title" style="color:var(--primary-blue);">Ma Commande</h2>
+    <div id="checkout-screen">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2 id="txt-title">Ma Commande</h2>
             <i class="fas fa-times" style="font-size:1.5rem;" onclick="closeCheckout()"></i>
         </div>
-        <div id="cart-items-list"></div>
-        <div style="display:flex; justify-content:space-between; font-weight:900; font-size:1.3rem; margin:20px 0; color:var(--primary-blue);">
-            <span>TOTAL</span><span id="final-total">0 DZD</span>
+        <div id="checkout-list" style="margin-top:20px;"></div>
+        <div style="display:flex; justify-content:space-between; font-weight:900; margin:25px 0; color:var(--primary-blue); font-size:1.2rem;">
+            <span>TOTAL</span><span id="total-final">0 DZD</span>
         </div>
+
+        <div class="type-selector">
+            <div class="type-opt active" id="o1" onclick="setType('sur-place', this)">Sur Place</div>
+            <div class="type-opt" id="o2" onclick="setType('emporter', this)">A Emporter</div>
+            <div class="type-opt" id="o3" onclick="setType('livraison', this)">Livraison</div>
+        </div>
+
         <form id="orderForm">
-            <div class="form-group"><label id="label-name">Nom complet</label><input type="text" id="name" required></div>
-            <div class="form-group"><label id="label-phone">Téléphone</label><input type="tel" id="phone" required></div>
-            <button type="submit" class="btn-wa" id="btn-wa-txt">COMMANDER SUR WHATSAPP</button>
+            <div class="form-group f-table visible"><label id="lb1">N° Table</label><input type="number" id="table"></div>
+            <div class="form-group f-name"><label id="lb2">Nom complet</label><input type="text" id="name"></div>
+            <div class="form-group f-phone"><label id="lb3">Téléphone</label><input type="tel" id="phone"></div>
+            <div class="form-group f-addr"><label id="lb4">Adresse</label><input type="text" id="addr"></div>
+            <button type="submit" class="btn-wa" id="btn-wa">COMMANDER SUR WHATSAPP</button>
         </form>
     </div>
 
     <script>
         const translations = {
-            fr: {
-                heroDesc: '"L\'authentique Pizza au Feu de Bois."',
-                btnTxt: "Voir le menu",
-                call: "Appeler",
-                loc: "Adresse",
-                catP: "Pizzas",
-                catB: "Boissons",
-                cartBar: "MON PANIER",
-                cartTitle: "Ma Commande",
-                labelName: "Nom complet",
-                labelPhone: "Téléphone",
-                btnWa: "COMMANDER SUR WHATSAPP"
-            },
-            ar: {
-                heroDesc: '"بيتزا أصلية على حطب الغابة"',
-                btnTxt: "عرض القائمة",
-                call: "اتصال",
-                loc: "الموقع",
-                catP: "بيتزا",
-                catB: "مشروبات",
-                cartBar: "سلتي",
-                cartTitle: "طلبيتي",
-                labelName: "الاسم الكامل",
-                labelPhone: "رقم الهاتف",
-                btnWa: "إرسال عبر واتساب"
-            }
+            fr: { desc: '"L\'authentique Pizza au Feu de Bois."', btn: "Voir le menu", call: "Appeler", loc: "Adresse", cp: "Pizzas", cb: "Boissons", mc: "MON PANIER", tit: "Ma Commande", o1: "Sur Place", o2: "A Emporter", o3: "Livraison", lb1: "N° Table", lb2: "Nom complet", lb3: "Téléphone", lb4: "Adresse", bwa: "COMMANDER SUR WHATSAPP" },
+            ar: { desc: '"بيتزا أصلية على حطب الغابة"', btn: "عرض القائمة", call: "اتصال", loc: "الموقع", cp: "بيتزا", cb: "مشروبات", mc: "سلتي", tit: "طلبيتي", o1: "في المطعم", o2: "للأخذ", o3: "توصيل", lb1: "رقم الطاولة", lb2: "الاسم الكامل", lb3: "رقم الهاتف", lb4: "العنوان", bwa: "إرسال عبر واتساب" }
         };
 
         const menu = {
@@ -170,81 +155,78 @@
                 {id:1, n:{fr:'Marguerite', ar:'مارغريتا'}, p:500, img:'p1.jpg'},
                 {id:2, n:{fr:'Végétarienne', ar:'نباتية'}, p:750, img:'p2.jpg'},
                 {id:3, n:{fr:'Thon', ar:'تونة'}, p:850, img:'p3.jpg'},
-                {id:4, n:{fr:'4 Fromages', ar:'4 أجبان'}, p:950, img:'p4.jpg'}
+                {id:4, n:{fr:'4 Fromages', ar:'4 أجبان'}, p:950, img:'p4.jpg'},
+                {id:5, n:{fr:'Poulet BBQ', ar:'دجاج BBQ'}, p:1000, img:'p5.jpg'},
+                {id:6, n:{fr:'Carnivore', ar:'لحوم'}, p:1100, img:'p6.jpg'}
             ],
             boissons: [
-                {id:5, n:{fr:'Coca 33cl', ar:'كوكا 33سل'}, p:150, img:'b1.jpg'},
-                {id:6, n:{fr:'Eau 1.5L', p:100, ar:'ماء 1.5ل'}, img:'b2.jpg'}
+                {id:7, n:{fr:'Coca 33cl', ar:'كوكا 33سل'}, p:150, img:'b1.jpg'},
+                {id:8, n:{fr:'Eau 1.5L', ar:'ماء 1.5ل'}, p:100, img:'b2.jpg'},
+                {id:9, n:{fr:'Jus Frais', ar:'عصير طازج'}, p:300, img:'b3.jpg'}
             ]
         };
 
-        let cart = [];
-        let currentLang = 'fr';
+        let cart = []; let currentLang = 'fr'; let currentType = 'sur-place';
 
-        function toggleDarkMode() {
+        function toggleDark() {
             document.body.classList.toggle('dark-mode');
             const icon = document.getElementById('dark-icon');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
+            icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun');
         }
 
-        function changeLang() {
+        function updateLang() {
             currentLang = document.getElementById('lang-select').value;
             document.body.classList.toggle('rtl', currentLang === 'ar');
             const t = translations[currentLang];
-            
-            document.getElementById('hero-desc').innerText = t.heroDesc;
-            document.getElementById('btn-txt').innerText = t.btnTxt;
-            document.getElementById('call-txt').innerText = t.call;
-            document.getElementById('loc-txt').innerText = t.loc;
-            document.getElementById('cat-p').innerText = t.catP;
-            document.getElementById('cat-b').innerText = t.catB;
-            document.getElementById('cart-bar-txt').innerHTML = `<i class="fas fa-shopping-basket"></i> ${t.cartBar}`;
-            document.getElementById('cart-title').innerText = t.cartTitle;
-            document.getElementById('label-name').innerText = t.labelName;
-            document.getElementById('label-phone').innerText = t.labelPhone;
-            document.getElementById('btn-wa-txt').innerText = t.btnWa;
-            render();
+            document.getElementById('h-desc').innerText = t.desc;
+            document.getElementById('h-btn').innerText = t.btn;
+            document.getElementById('txt-c').innerText = t.call;
+            document.getElementById('txt-l').innerText = t.loc;
+            document.getElementById('cp').innerText = t.cp;
+            document.getElementById('cb').innerText = t.cb;
+            document.getElementById('txt-mc').innerText = t.mc;
+            document.getElementById('txt-title').innerText = t.tit;
+            document.getElementById('o1').innerText = t.o1;
+            document.getElementById('o2').innerText = t.o2;
+            document.getElementById('o3').innerText = t.o3;
+            document.getElementById('lb1').innerText = t.lb1;
+            document.getElementById('lb2').innerText = t.lb2;
+            document.getElementById('lb3').innerText = t.lb3;
+            document.getElementById('lb4').innerText = t.lb4;
+            document.getElementById('btn-wa').innerText = t.bwa;
+            renderItems();
         }
 
-        function showMenu() {
-            document.getElementById('hero').style.display = 'none';
-            document.getElementById('menu-ui').style.display = 'block';
-            render();
-        }
-
-        function tab(t, b) {
-            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-            b.classList.add('active');
+        function tab(c, b) {
+            document.querySelectorAll('.cat-btn').forEach(x => x.classList.remove('active')); b.classList.add('active');
             document.querySelectorAll('.list-container').forEach(g => g.classList.remove('active'));
-            document.getElementById(t === 'pizzas' ? 'p-list' : 'b-list').classList.add('active');
+            document.getElementById(c === 'pizzas' ? 'p-grid' : 'b-grid').classList.add('active');
         }
 
-        function render() {
-            ['pizzas', 'boissons'].forEach(c => {
-                const g = document.getElementById(c === 'pizzas' ? 'p-list' : 'b-list');
-                g.innerHTML = menu[c].map(i => `
+        function renderItems() {
+            ['pizzas', 'boissons'].forEach(cat => {
+                const g = document.getElementById(cat === 'pizzas' ? 'p-grid' : 'b-grid');
+                g.innerHTML = menu[cat].map(i => `
                     <div class="item-row">
                         <div class="img-box"><img src="${i.img}" onerror="this.parentElement.style.display='none'"></div>
-                        <div class="item-details">
-                            <div class="item-name">${i.n[currentLang]}</div>
+                        <div class="item-info">
+                            <div style="font-weight:700">${i.n[currentLang]}</div>
                             <div class="item-price">${i.p} DZD</div>
                         </div>
-                        <button class="add-btn" onclick="changeQty(${i.id}, 1, '${c}')">+</button>
+                        <button class="add-btn" onclick="changeQty(${i.id}, 1, '${cat}')">+</button>
                     </div>
                 `).join('');
             });
         }
 
         function changeQty(id, delta, cat = null) {
-            const itemInCart = cart.find(i => i.id === id);
-            if (itemInCart) {
-                itemInCart.qty += delta;
-                if (itemInCart.qty <= 0) cart = cart.filter(i => i.id !== id);
+            const item = cart.find(x => x.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
             } else if (delta > 0) {
-                const source = cat ? menu[cat] : [...menu.pizzas, ...menu.boissons];
-                const item = source.find(i => i.id === id);
-                cart.push({...item, qty: 1});
+                const src = cat ? menu[cat] : [...menu.pizzas, ...menu.boissons];
+                cart.push({...src.find(x => x.id === id), qty: 1});
             }
             updateUI();
         }
@@ -252,36 +234,43 @@
         function updateUI() {
             const total = cart.reduce((s, i) => s + (i.p * i.qty), 0);
             document.getElementById('cart-bar').style.display = cart.length > 0 ? 'flex' : 'none';
-            document.getElementById('bar-total').innerText = total + " DZD";
-            if(document.getElementById('cart-screen').style.display === 'block') renderCheckout();
+            document.getElementById('total-bar').innerText = total + " DZD";
+            if(document.getElementById('checkout-screen').style.display === 'block') renderCheckout();
         }
 
         function renderCheckout() {
-            const list = document.getElementById('cart-items-list');
-            list.innerHTML = cart.map(i => `
-                <div class="cart-item">
-                    <div style="flex:1">
-                        <div style="font-weight:700">${i.n[currentLang]}</div>
-                        <div style="color:var(--primary-blue); font-weight:800;">${i.p * i.qty} DZD</div>
-                    </div>
-                    <div class="qty-controls">
+            document.getElementById('checkout-list').innerHTML = cart.map(i => `
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--accent-grey)">
+                    <div style="font-weight:700">${i.n[currentLang]}</div>
+                    <div class="qty-box">
                         <button class="qty-btn" onclick="changeQty(${i.id}, -1)">-</button>
                         <span style="font-weight:800">${i.qty}</span>
                         <button class="qty-btn" onclick="changeQty(${i.id}, 1)">+</button>
                     </div>
                 </div>
             `).join('');
-            document.getElementById('final-total').innerText = cart.reduce((s, i) => s + (i.p * i.qty), 0) + " DZD";
+            document.getElementById('total-final').innerText = cart.reduce((s, i) => s + (i.p * i.qty), 0) + " DZD";
         }
 
-        function showCheckout() { document.getElementById('cart-screen').style.display = 'block'; renderCheckout(); }
-        function closeCheckout() { document.getElementById('cart-screen').style.display = 'none'; }
+        function setType(t, b) {
+            currentType = t;
+            document.querySelectorAll('.type-opt').forEach(o => o.classList.remove('active')); b.classList.add('active');
+            document.querySelectorAll('.form-group').forEach(f => f.classList.remove('visible'));
+            if(t === 'sur-place') document.querySelector('.f-table').classList.add('visible');
+            else if(t === 'emporter') { document.querySelector('.f-name').classList.add('visible'); document.querySelector('.f-phone').classList.add('visible'); }
+            else { document.querySelector('.f-name').classList.add('visible'); document.querySelector('.f-phone').classList.add('visible'); document.querySelector('.f-addr').classList.add('visible'); }
+        }
+
+        function showMenu() { document.getElementById('hero').style.display='none'; document.getElementById('menu-ui').style.display='block'; renderItems(); }
+        function openCheckout() { document.getElementById('checkout-screen').style.display='block'; renderCheckout(); }
+        function closeCheckout() { document.getElementById('checkout-screen').style.display='none'; }
 
         document.getElementById('orderForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const n = document.getElementById('name').value;
-            const p = document.getElementById('phone').value;
-            let msg = `*NEWBORN K.OZ*\nClient: ${n}\nTél: ${p}\n\nArticles:\n` + cart.map(i => `- ${i.qty}x ${i.n.fr}`).join('\n');
+            let msg = `*NEWBORN K.OZ*\nType: ${currentType}`;
+            if(currentType === 'sur-place') msg += `\nTable: ${document.getElementById('table').value}`;
+            else { msg += `\nClient: ${document.getElementById('name').value}\nTél: ${document.getElementById('phone').value}`; if(currentType === 'livraison') msg += `\nAdresse: ${document.getElementById('addr').value}`; }
+            msg += `\n\nArticles:\n` + cart.map(i => `- ${i.qty}x ${i.n.fr}`).join('\n');
             msg += `\n\n*TOTAL: ${cart.reduce((s,i)=>s+(i.p*i.qty),0)} DZD*`;
             window.open(`https://wa.me/213659235094?text=${encodeURIComponent(msg)}`, '_blank');
         });
